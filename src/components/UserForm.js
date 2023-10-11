@@ -28,7 +28,10 @@ const UserForm=props=>{
             })
             return;
         }
-        const obj={username:name,age:age};
+        const obj={username:name,age:age,id:Math.random().toString()};
+        /*reseting form */
+        setUsername('');
+        setAge('');
         props.onUserAdded(obj);
     }
     
@@ -36,9 +39,9 @@ const UserForm=props=>{
         <Card>
             <form className="form" onSubmit={submissionHandler}>
                 <label for='username'>Username</label>
-                <input id="username" type="text" onChange={usernameChangeHandler}></input>
+                <input id="username" type="text" value={name} onChange={usernameChangeHandler}></input>
                 <label for='age'>Age(Years)</label>
-                <input id="age" type="number" onChange={ageChangeHandler}></input>
+                <input id="age" type="number" value={age} onChange={ageChangeHandler}></input>
                 <Button value="Add User"/>
             </form>
         </Card>

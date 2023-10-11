@@ -4,9 +4,9 @@ import './UserItem.css'
 
 const UserItem=props=>{
     return(
-        <div className="userItem">
+        <li className="userItem">
             {`${props.userobj.username} (${props.userobj.age} years old)`}
-        </div>
+        </li>
     );
 }
 

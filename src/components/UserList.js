@@ -6,7 +6,9 @@ import UserItem from "./UserItem";
 const UserList=props=>{
     return(
     <Card>
-          {props.users.map(user=><UserItem userobj={user}/>)}
+        <ul className="userList">
+          {props.users.map(user=><UserItem key={user.id} userobj={user}/>)}
+        </ul>
     </Card>
     );
 }
