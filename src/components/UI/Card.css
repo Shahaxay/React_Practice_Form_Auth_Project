@@ -1,0 +1,17 @@
+.card{
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    display: block;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 0;
+    z-index: -10;
+}
+.errorModelCard{
+    position: absolute;
+    top:30%;
+    left:25%;
+    z-index: 100;
+}

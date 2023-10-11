@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
 
-function App() {
+import UserForm from './components/UserForm';
+import UserList from './components/UserList';
+import ErrorModel from './components/UI/ErrorModel';
+
+const App=()=> {
+  const [users,setUser]=useState([]);
+  const [error,setError]=useState();
+  const errorHandler=errObj=>{
+    setError({
+      title:errObj.title,
+      message:errObj.message
+    });
+  }
+  const errorConfirmHandler=()=>{
+    setError(null);
+  }
+  const userAddedHandler=user=>{
+    setUser(prevUser=>[user,...prevUser])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {error && <ErrorModel errObj={error} onConfirm={errorConfirmHandler}/>}
+      <UserForm onUserAdded={userAddedHandler} onValidation={errorHandler}/>
+      <UserList users={users}/>
     </div>
   );
 }

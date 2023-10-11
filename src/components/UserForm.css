@@ -1,0 +1,13 @@
+.form{
+    border-radius: 12px;
+    padding: 1rem;
+    line-height: 2rem;
+    display: block;
+}
+.form *{
+    width: 100%;
+    padding:5px;
+}
+.form label{
+    font-weight: bold;
+}
