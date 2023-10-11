@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
-import ErrorModel from './components/UI/ErrorModel';
 
 const App=()=> {
   const [users,setUser]=useState([]);
