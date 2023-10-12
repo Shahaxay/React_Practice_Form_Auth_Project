@@ -8,14 +8,16 @@ import ErrorModel from "./UI/ErrorModel";
 const UserForm = props => {
     const nameRef=useRef();
     const ageRef=useRef();
+    const collegeRef=useRef();
     const submissionHandler = (e) => {
         e.preventDefault();
         const name=nameRef.current.value;
         const age=ageRef.current.value;
-        if (age.trim().length === 0 || name.trim().length === 0) {
+        const college=collegeRef.current.value;
+        if (age.trim().length === 0 || name.trim().length === 0 || college.trim().length===0) {
             errorHandler({
                 title: 'Invalid Input',
-                message: 'Please enter a valid name and age (non-empty values)'
+                message: 'Please enter a valid name, age and college (non-empty values)'
             })
             return;
         } else if (age < 0) {
@@ -25,11 +27,12 @@ const UserForm = props => {
             })
             return;
         }
-        const obj = { username: name, age: age, id: Math.random().toString() };
+        const obj = { username: name, age: age, college: college, id: Math.random().toString() };
         /*reseting form */
         //note: manipulating dom with refs in not recommended, we are using here becoz we are not changing dom, we cange only user input
         nameRef.current.value='';
         ageRef.current.value='';
+        collegeRef.current.value='';
         props.onUserAdded(obj);
     }
     /*Form validation error handling */
@@ -52,6 +55,8 @@ const UserForm = props => {
                 <input id="username" type="text" ref={nameRef}></input>
                 <label for='age'>Age(Years)</label>
                 <input id="age" type="number" ref={ageRef}></input>
+                <label for='college'>College Name</label>
+                <input id="college" type="text" ref={collegeRef}></input>
                 <Button value="Add User" />
             </form>
         </Card>
